@@ -21,14 +21,19 @@ namespace RazorPagesExample1.Pages
 
         [BindProperty(SupportsGet = true)] //you have to pass this value in url like ?LastName=Ali
         public string LastName { get; set; }
+        [BindProperty(SupportsGet = true)]//if this is null then it will be passed through the redirectingToPage(Index) in Address model 
+        public string City { get; set; }
 
         public void OnGet()
         {
             //writing the name to the UI
             FirstName = "Muzdalifa";
 
-            if (string.IsNullOrEmpty(LastName))
+            if(string.IsNullOrEmpty(LastName))
                 LastName = "User";
+
+            if (string.IsNullOrEmpty(City))
+                City = "The Web";
         }
     }
 }
